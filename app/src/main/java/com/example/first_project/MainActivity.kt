@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             First_projectTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Home(modifier = Modifier.padding(innerPadding))
+                    Home(modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding()))
                 }
             }
         }
