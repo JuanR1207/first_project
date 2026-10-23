@@ -1,18 +1,17 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
     namespace = "com.example.first_project"
-    compileSdk {
-        version = release(37)
-    }
+    compileSdk = 37 // Actualizado a 37 para cumplir con el requisito de las dependencias
 
     defaultConfig {
         applicationId = "com.example.first_project"
         minSdk = 30
-        targetSdk = 37
+        targetSdk = 37 // Actualizado para coincidir con compileSdk
         versionCode = 1
         versionName = "1.0"
 
@@ -37,6 +36,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.navigation.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
@@ -45,6 +45,9 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
+
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

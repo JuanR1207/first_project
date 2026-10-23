@@ -1,30 +1,38 @@
 package com.example.first_project.ui.screen
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.first_project.ui.section.Body
-import com.example.first_project.ui.section.Header
+import androidx.compose.ui.unit.dp
 
 @Composable
-fun Home(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Color.White)
-    ) {
-        Header()
-        Body(modifier = Modifier.weight(1f))
-        // Footer() -> el diseño "Descubre" no lo usa; déjalo comentado o agrégalo si lo quieres
+fun Home(
+    onirProducto: () -> Unit,
+    onIrPerfil: () -> Unit,
+    onIrConfiguracion: () -> Unit // 1. Nuevo parámetro para configuración
+){
+    Column {
+        Text(text = "Hola desde Home")
+
+        Button(onClick = { onirProducto() }) {
+            Text(text = "ir a producto")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Button(onClick = { onIrPerfil() }) {
+            Text(text = "Ir a Perfil")
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // 2. Nuevo botón para ir a la configuración
+        Button(onClick = { onIrConfiguracion() }) {
+            Text(text = "Ir a Configuración")
+        }
     }
-}
-
-@Preview(showBackground = true, widthDp = 360, heightDp = 780)
-@Composable
-fun HomePreview() {
-    Home()
 }
